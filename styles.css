@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 550px;
+    width: 450px;
+    padding: 2px;
+    background-color: black;
+}
+
+.display {
+    height: 90px;
+    background-color: bisque;
+    font-size: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    border: 5px solid black;
+}
+
+.key-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.key {
+    height: 92px;
+    width: 111.5px;
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.zero {
+    flex-grow: 1;
+}
+
+.operator,
+.clear,
+.result,
+.delete {
+    background-color: aqua;
+}
