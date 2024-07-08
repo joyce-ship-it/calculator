@@ -19,7 +19,7 @@ function divide(num1, num2) {
         return;
     }
     let res = num1 / num2;
-    return Math.round(res * 100) / 100;
+    return res.toFixed(2);
 }
 function modulo(num1, num2) {
     return num1 % num2;
@@ -50,7 +50,7 @@ function operate(num1, num2, operator) {
 }
 
 let displayValue;
-
+let dot = document.querySelector('.dot');
 
 function isOperator(str) {
     if (str === '+' || str === '-' || str === 'x' || str === '/' || str === '%') {
@@ -64,6 +64,7 @@ function allClear() {
     num2 = undefined;
     fullStr = "";
     console.log("All clear pressed", num1, num2, fullStr, display.textContent)
+    dot.disabled = false;
 }
 
 function deleteLastNum(str) {
@@ -84,6 +85,7 @@ keyContainer.addEventListener('click', (e) => {
     if (target.classList.contains('num')) {
         if (display.textContent === '0' && target.textContent === '0') {
             display.textContent = '0';
+            fullStr += 0;
         }
         else {
             if (display.textContent !== '0' && (!isOperator(fullStr.slice(-1)))) {
@@ -92,12 +94,13 @@ keyContainer.addEventListener('click', (e) => {
                 displayValue = display.textContent;
             }
             else if (display.textContent === '0' || (isOperator(fullStr.slice(-1)))) {
+                dot.disabled = false;
                 fullStr += target.textContent;
                 display.textContent = "";
                 display.textContent += target.textContent;
                 displayValue = display.textContent;
-
             }
+
         }
     }
 
@@ -122,7 +125,7 @@ keyContainer.addEventListener('click', (e) => {
             num2 = +(display.textContent);
             console.log(num2);
         }
-        if (num1 && num2) {
+        if (num1 !== undefined && num2 != undefined) {
             console.log(operator[0])
             num1 = operate(num1, num2, operator[0]);
             num2 = undefined;
